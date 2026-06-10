@@ -1,0 +1,46 @@
+{{ block title }}
+Judge home
+{{ endblock }}
+
+{{ block content }}
+{{ if judge_name }}
+<p><strong>Judge Name:</strong> {{ judge_name }}</p>
+{{ endif }}
+
+{{ if saved_message }}
+<div class="alert alert-success">{{ saved_message }}</div>
+{{ endif }}
+
+<p>Select one of your assigned presentations to rate or edit.</p>
+
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>Student name</th>
+        <th>Session</th>
+        <th>Format</th>
+        <th>Status</th>
+        <th>Rating</th>
+        <th>Action</th>
+    </tr>
+    {{ for a in assignments }}
+    <tr>
+        <td>{{ a.position }}</td>
+        <td>{{ a.student_name }}</td>
+        <td>{{ a.session_number }}</td>
+        <td>{{ a.format }}</td>
+        <td>{{ if a.done }}Completed{{ else }}Not yet completed{{ endif }}</td>
+        <td>{{ a.score }}</td>
+        <td>
+            <button
+                class="btn btn-primary"
+                type="submit"
+                name="selected_student_id_temp"
+                value="{{ a.student_id }}">
+                {{ a.action_label }}
+            </button>
+        </td>
+    </tr>
+    {{ endfor }}
+</table>
+{{ endblock }}

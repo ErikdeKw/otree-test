@@ -1,0 +1,20 @@
+{{ block title }}
+Rate presentation
+{{ endblock }}
+
+{{ block content }}
+<p><strong>Student:</strong> {{ student_name }}</p>
+
+{{ formfield player.score }}
+{{ formfield player.comments }}
+
+<input type="hidden" name="go_back" id="id_go_back" value="False">
+
+<button class="btn btn-primary" type="submit">Save</button>
+<button
+    class="btn btn-secondary"
+    type="submit"
+    onclick="document.getElementById('id_go_back').value='True';">
+    Back to home
+</button>
+{{ endblock }}
